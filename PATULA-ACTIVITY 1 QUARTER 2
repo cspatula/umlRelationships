@@ -1,0 +1,107 @@
+
+ // 1. ASSOCIATION
+class Doctor {
+    String name = "Dr. Santos";
+}
+
+class Patient {
+    void consult(Doctor doctor) {
+        System.out.println("Association: Patient consults " + doctor.name);
+    }
+}
+
+// 2. AGGREGATION
+class Member {
+    String name;
+
+    Member(String name) {
+        this.name = name;
+    }
+}
+
+class Club {
+    Member member;
+
+    Club(Member member) {
+        this.member = member;
+    }
+
+    void showMember() {
+        System.out.println("Aggregation: Club member is " + member.name);
+    }
+}
+
+// 3. COMPOSITION
+class Engine {
+    void start() {
+        System.out.println("Composition: Engine is running.");
+    }
+}
+
+class Car {
+    private Engine engine;
+
+    Car() {
+        engine = new Engine();
+    }
+
+    void startCar() {
+        engine.start();
+    }
+}
+
+// 4. INHERITANCE
+class Vehicle {
+    void move() {
+        System.out.println("Inheritance: Vehicle is moving.");
+    }
+}
+
+class Bicycle extends Vehicle {
+    void pedal() {
+        System.out.println("Inheritance: Bicycle is pedaling.");
+    }
+}
+
+// 5. DEPENDENCY
+class Message {
+    void send(String text) {
+        System.out.println(text);
+    }
+}
+
+class Phone {
+    void sendMessage(Message message) {
+        message.send("Dependency: Hello from my phone!");
+    }
+}
+
+// MAIN PROGRAM
+public class UMLRelationships {
+    public static void main(String[] args) {
+
+        // Association
+        Doctor doctor = new Doctor();
+        Patient patient = new Patient();
+        patient.consult(doctor);
+
+        // Aggregation
+        Member member = new Member("Maria");
+        Club club = new Club(member);
+        club.showMember();
+
+        // Composition
+        Car car = new Car();
+        car.startCar();
+
+        // Inheritance
+        Bicycle bicycle = new Bicycle();
+        bicycle.move();
+        bicycle.pedal();
+
+        // Dependency
+        Message message = new Message();
+        Phone phone = new Phone();
+        phone.sendMessage(message);
+    }
+}
